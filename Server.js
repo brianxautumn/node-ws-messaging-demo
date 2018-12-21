@@ -8,10 +8,10 @@ class Server {
 
   connect() {
     this.wss = new WebSocket.Server({ port: this.port });
-    this.wss.on('connection', this.handleMessage.bind(this));
+    this.wss.on('connection', this.handleConnection.bind(this));
   }
 
-  handleMessage(ws) {
+  handleConnection(ws) {
     ws.on('message', (message) => {
       console.log(`Broadcasting: ${message}`);
       this.broadcast(ws, message);
