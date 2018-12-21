@@ -1,5 +1,14 @@
 # node-ws-messaging-demo
 Simple node messaging app using [ws](https://www.npmjs.com/package/ws).
+
+To run:
+```
+$ node Client.js
+```
+Then from more than one other terminals:
+```
+$ node Server.js
+```
 ## Server
 The server class is a wrapper for the `WebSocket.Server` class. The server class holds the port number to listen on, and will accept incoming messages from any client, and broadcast them back to all other clients, exluding the sender.
 
