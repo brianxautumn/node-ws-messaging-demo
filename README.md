@@ -14,7 +14,7 @@ The handle message function takes the websocket object when a new connection ope
   ```
   To broadcast, we simply loop through the client objects, skipping the origin client.
   ```javascript
-    broadcast(ws, message) {
+  broadcast(ws, message) {
     this.wss.clients.forEach((client) => {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
         client.send(message, (e) => {
@@ -22,11 +22,12 @@ The handle message function takes the websocket object when a new connection ope
         });
       }
     });
+  }
   ```
   
   ## Client
   The client is a little bit more interesting because there is a case to handle when the server goes down. In the handle close function, we use `setTimeout` to attempt to reconnect. Note the new connection will be a new `WebSocket` object.
-  ```javascriot
+  ```javascript
   handleClose(e) {
     console.log('Connection Close');
     this.ws = null;
